@@ -28,6 +28,9 @@ fi
 
 cp .env.example .env
 
+echo $'\n' "------ Application is now in maintenance mode -------------------" $'\n'
+ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan down 2> /dev/null"
+
 rsync -azh \
 	--exclude='.git/' \
 	--exclude='.git*' \
@@ -45,7 +48,6 @@ then
 	echo $'\n' "------ SYNC SUCCESSFUL! -----------------------" $'\n'
 	echo $'\n' "------ RELOADING PERMISSION -------------------" $'\n'
 
-        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan down 2> /dev/null"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan key:generate --ansi"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "sudo chown -R $OWNER:$OWNER $PATH_SOURCE"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "sudo chmod 775 -R $PATH_SOURCE"
