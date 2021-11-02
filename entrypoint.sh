@@ -28,7 +28,7 @@ fi
 
 cp .env.example .env
 
-rsync --progress -azh \
+rsync -azh \
 	--exclude='.git/' \
 	--exclude='.git*' \
 	--exclude='.editorconfig' \
