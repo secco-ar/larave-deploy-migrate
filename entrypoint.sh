@@ -26,7 +26,7 @@ then
 	ssh-keyscan -p $SSH_PORT -H "$SSH_HOST" >> /root/.ssh/known_hosts
 fi
 
-#cp .env.example .env
+cp .env.example .env
 
 echo $'\n' "------ Application is now in maintenance mode -------------------" $'\n'
 ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan down 2> /dev/null"
