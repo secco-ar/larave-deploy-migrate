@@ -55,6 +55,7 @@ then
         ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan config:cache"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan config:clear"
         ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate"
+        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan db:seed"
         ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan up 2> /dev/null"
 	echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 	exit 0
