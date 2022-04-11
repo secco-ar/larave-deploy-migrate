@@ -32,7 +32,7 @@ jobs:
             -   name: Install Packages
                 run: composer install --no-dev
             -   name: Deploy to Server
-                uses: kosratdev/laravel-deploy-migrate@laravel
+                uses: secco-ar/larave-deploy-migrate@master
                 with:
                     user: user
                     host: host
