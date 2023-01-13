@@ -58,8 +58,8 @@ then
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan view:clear"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan view:cache"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan event:cache"
-	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate"
-        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan db:seed"
+	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate --force"
+        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan db:seed --force"
         ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan up 2> /dev/null"
 	echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 	exit 0
