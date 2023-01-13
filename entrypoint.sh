@@ -53,14 +53,14 @@ then
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "sudo chmod 755 -R $PATH_SOURCE/storage"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "sudo chmod 755 -R $PATH_SOURCE/public"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan optimize:clear"
-        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan config:cache"
+    ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan config:cache"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan route:cache"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan view:clear"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan view:cache"
 	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan event:cache"
-	ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate --force"
-        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan db:seed --force"
-        ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan up 2> /dev/null"
+	# ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate --force"
+    # ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan db:seed --force"
+    ssh -i /root/.ssh/id_rsa -tt $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan up 2> /dev/null"
 	echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 	exit 0
 else
